@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/contactosFragment">
+
+    <fragment
+        android:id="@+id/contactosFragment"
+        android:name="com.recycler.agendacontactos.views.listar.ListaContactosFragment"
+        android:label="fragment_contactos"
+        tools:layout="@layout/fragment_lista_contactos" >
+        <action
+            android:id="@+id/action_contactosFragment_to_agregarContactoFragment"
+            app:destination="@id/agregarContactoFragment" />
+        <action
+            android:id="@+id/action_contactosFragment_to_mostrarContactoFragment"
+            app:destination="@id/mostrarContactoFragment" />
+        <action
+            android:id="@+id/action_contactosFragment_to_editarContactoFragment"
+            app:destination="@id/editarContactoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/agregarContactoFragment"
+        android:name="com.recycler.agendacontactos.views.agregar.AgregarContactoFragment"
+        android:label="AgregarContactoFragment" >
+        <action
+            android:id="@+id/action_agregarContactoFragment_to_contactosFragment"
+            app:destination="@id/contactosFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mostrarContactoFragment"
+        android:name="com.recycler.agendacontactos.views.mostrar.MostrarContactoFragment"
+        android:label="MostrarContactoFragment" >
+        <action
+            android:id="@+id/action_mostrarContactoFragment_to_contactosFragment"
+            app:destination="@id/contactosFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editarContactoFragment"
+        android:name="com.recycler.agendacontactos.views.editar.EditarContactoFragment"
+        android:label="EditarContactoFragment" >
+        <action
+            android:id="@+id/action_editarContactoFragment_to_contactosFragment"
+            app:destination="@id/contactosFragment" />
+    </fragment>
+</navigation>

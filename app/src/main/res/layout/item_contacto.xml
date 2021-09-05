@@ -2,37 +2,44 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp">
+    android:orientation="vertical"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp">
             <ImageView
                 android:id="@+id/icUser"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:src="@drawable/ic_user"
-                android:tint="@color/colorPrimary"/>
+                android:src="@drawable/ic_user" />
             <TextView
                 android:id="@+id/tvNombre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:text="Nombre contacto"
-                android:textSize="25dp"
+                android:textSize="20dp"
+                android:layout_marginLeft="20dp"
                 android:layout_toRightOf="@+id/icUser"
-                android:layout_centerVertical="true"
+                android:maxLines="1"
+                android:ellipsize="end"/>
+
+            <TextView
+                android:id="@+id/tvProfesion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Profesión"
+                android:textSize="15dp"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@+id/icUser"
+                android:layout_below="@+id/tvNombre"
                 android:maxLines="1"
                 android:ellipsize="end"/>
 
         </RelativeLayout>
 
-        
-    </androidx.cardview.widget.CardView>
 
 </LinearLayout>

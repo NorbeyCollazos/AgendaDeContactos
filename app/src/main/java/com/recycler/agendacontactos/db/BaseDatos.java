@@ -60,9 +60,46 @@ public class BaseDatos extends SQLiteOpenHelper {
         return contactos;
     }
 
-    public void insertarContacto(ContentValues contentValues){
+    public long insertarContacto(ContentValues contentValues){
+        long result = 0;
         SQLiteDatabase db = this.getWritableDatabase();
-        db.insert(ConstantsDB.TABLE_CONTACTS, null, contentValues);
+        result = db.insert(ConstantsDB.TABLE_CONTACTS, null, contentValues);
         db.close();
+
+        return result;
+    }
+
+    public Contacto consultarContacto(int id){
+
+        String query = "SELECT * FROM " + ConstantsDB.TABLE_CONTACTS + " WHERE "+ConstantsDB.TABLE_CONTACTS_ID+" = "+id;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor registros = db.rawQuery(query,null);
+        Contacto contacto = new Contacto();
+        if (registros.moveToFirst()){
+            contacto.setNombre(registros.getString(1));
+            contacto.setTelefono(registros.getString(2));
+            contacto.setCorreo(registros.getString(3));
+        }
+
+        return contacto;
+
+    }
+
+    public long editarContacto(final int id, ContentValues contentValues){
+        long result = 0;
+        SQLiteDatabase db = this.getWritableDatabase();
+        //result = db.insert(ConstantsDB.TABLE_CONTACTS, null, contentValues);
+        result = db.update(ConstantsDB.TABLE_CONTACTS, contentValues, ConstantsDB.TABLE_CONTACTS_ID +" = "+id, null);
+        db.close();
+
+        return result;
+    }
+
+    public long eliminarContacto(int id){
+        long result = 0;
+        SQLiteDatabase db = this.getWritableDatabase();
+        result = db.delete(ConstantsDB.TABLE_CONTACTS, ConstantsDB.TABLE_CONTACTS_ID+ " = "+ id, null);
+
+        return result;
     }
 }

@@ -1,6 +1,7 @@
 package com.recycler.agendacontactos.adapters;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.recycler.agendacontactos.R;
@@ -40,7 +42,9 @@ public class ContactoAdapter extends RecyclerView.Adapter<ContactoAdapter.contac
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, ""+contacto.getId(), Toast.LENGTH_SHORT).show();
+                Bundle bundle = new Bundle();
+                bundle.putInt("id", contacto.getId());
+                Navigation.findNavController(view).navigate(R.id.mostrarContactoFragment, bundle);
             }
         });
     }
