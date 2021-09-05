@@ -6,6 +6,8 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 
 import com.recycler.agendacontactos.adapters.PagerAdapterTabsInicial;
 
@@ -26,5 +28,12 @@ public class MainActivity extends AppCompatActivity {
         tabStrip.setTextColor(Color.WHITE);
         tabStrip.setTabIndicatorColor(Color.WHITE);
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_add, menu);
+        return true;
     }
 }

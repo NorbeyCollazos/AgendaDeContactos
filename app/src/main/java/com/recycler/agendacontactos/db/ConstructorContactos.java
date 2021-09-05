@@ -2,6 +2,7 @@ package com.recycler.agendacontactos.db;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.widget.Toast;
 
 import com.recycler.agendacontactos.models.Contacto;
 
@@ -16,22 +17,21 @@ public class ConstructorContactos {
     }
 
     public ArrayList<Contacto> obtenerDatos(){
-        /*ArrayList<Contacto> contactos = new ArrayList<>();
-        contactos.add(new Contacto(1,"Norbey","3208274742","correo"));
-        return contactos;*/
-
         BaseDatos db = new BaseDatos(context);
-        insertarContactos(db);
         return db.obtenerTodosLosContactos();
     }
 
-    public void insertarContactos(BaseDatos db){
+    public void insertarContactos(Contacto contacto){
+        BaseDatos db = new BaseDatos(context);
         ContentValues contentValues = new ContentValues();
-        contentValues.put(ConstantsDB.TABLE_CONTACTS_NAME,"Norbey collazos");
-        contentValues.put(ConstantsDB.TABLE_CONTACTS_PHONE,"3208274742");
-        contentValues.put(ConstantsDB.TABLE_CONTACTS_EMAIL,"ncrcollazos@gmail.com");
+        contentValues.put(ConstantsDB.TABLE_CONTACTS_NAME, contacto.getNombre());
+        contentValues.put(ConstantsDB.TABLE_CONTACTS_PHONE,contacto.getTelefono());
+        contentValues.put(ConstantsDB.TABLE_CONTACTS_EMAIL,contacto.getCorreo());
 
         db.insertarContacto(contentValues);
+
+        Toast.makeText(context, "Contacto registrado", Toast.LENGTH_SHORT).show();
+        obtenerDatos();
 
     }
 }

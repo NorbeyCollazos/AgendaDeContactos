@@ -17,7 +17,9 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@color/colorPrimary"
-            android:focusableInTouchMode="false"></androidx.viewpager.widget.PagerTabStrip>
+            android:focusableInTouchMode="false">
+
+        </androidx.viewpager.widget.PagerTabStrip>
 
 
     </androidx.viewpager.widget.ViewPager>
